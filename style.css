@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&family=Varela+Round&display=swap');
+*{ 
+  margin: 0; /*모든 방향 마진 0으로 설정 */
+  padding: 0;
+  box-sizing: border-box;
+}
+a, a:link, a:visited{
+  text-decoration: none; /*밑줄 없애기*/
+  color:inherit; /*부모 요소의 텍스트 색상 상속*/
+}
+li{
+  list-style: none;
+}
+.container{
+  width: 1140px;
+  margin: 0 auto;
+}
+
