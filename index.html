@@ -1,125 +1,238 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Custom Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+  <title>Final Project</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Header -->
+  <!-- header -->
   <header>
     <div class="container">
-      <h1><button data-animation-scroll="true" data-target="#main">MyPortfolio</button></h1>
+      <h1>
+        <button data-animation-scroll="true" data-target="#main">SU</button>
+      </h1>
       <nav>
         <ul>
-          <li><button data-animation-scroll="true" data-target="#about">About</button></li>
-          <li><button data-animation-scroll="true" data-target="#skills">Skills</button></li>
-          <li><button data-animation-scroll="true" data-target="#projects">Projects</button></li>
-          <li><button data-animation-scroll="true" data-target="#contact">Contact</button></li>
+          <li>
+            <button data-animation-scroll="true" data-target="#about">
+              내 소개
+            </button>
+          </li>
+          <li>
+            <button data-animation-scroll="true" data-target="#features">
+              활용 기술 스택
+            </button>
+          </li>
+          <li>
+            <button data-animation-scroll="true" data-target="#portfolio">
+              포트폴리오
+            </button>
+          </li>
+          <li>
+            <button data-animation-scroll="true" data-target="#contact">
+              연락처
+            </button>
+          </li>
         </ul>
       </nav>
     </div>
   </header>
-
-  <!-- Main Section -->
+  <!-- //end header -->
+  <!-- main -->
   <main id="main">
     <div class="container">
       <h4>Welcome</h4>
-      <h2>I AM A <span></span></h2>
-      <p>Showcase your projects and skills to potential employers and collaborators.</p>
-      <button class="download">Download Resume</button>
+      <h2 class="active">I`M A <span></span></h2>
+      <p>나의 소개를 담은 페이지로 한 페이지 안에 나의 포트폴리오와 특징 소개를 보고 확인할 수 있습니다.</p>
+      <button class="download">DOWNLOAD CV</button>
+      <button class="mouse"><i class="fa-solid fa-computer-mouse"></i></button>
     </div>
   </main>
-
-<!-- About Me Section -->
-<section id="about">
-  <div class="container">
-    <h2>About Me</h2>
-    <div class="about-container">
-      <div class="about-left">
-        <img id="profile-pic" src="images/default-profile.png" alt="Profile Picture">
-        <button id="upload-pic-btn">Upload Picture</button>
-        <input type="file" id="upload-pic" accept="image/*" style="display: none;">
-      </div>
-      <div class="about-right">
-        <h3 id="about-title">[Your Name]</h3>
-        <p id="about-description">[Introduce yourself here]</p>
-        <textarea id="about-input" placeholder="Write about yourself here"></textarea>
-        <button id="save-about-btn">Save</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-  <!-- Skills Section -->
-  <section id="skills">
+  <!-- //end Main -->
+  <!-- About Me -->
+  <section id="about" class="about">
     <div class="container">
-      <h2>My Skills</h2>
-      <div class="skills-list">
-        <div class="skill-item">
-          <i class="fa-brands fa-html5"></i>
-          <h3>HTML5</h3>
-          <p>Experienced in building semantic and accessible HTML structures.</p>
+      <div class="title">
+        <h4>Who Am I</h4>
+        <h2>내 소개</h2>
+      </div>
+      <div class="about-self">
+        <div class="left">
+          <img src="images/me_alone.jpg" alt="">
         </div>
-        <div class="skill-item">
-          <i class="fa-brands fa-css3-alt"></i>
-          <h3>CSS3</h3>
-          <p>Proficient in creating responsive and visually appealing designs.</p>
-        </div>
-        <div class="skill-item">
-          <i class="fa-brands fa-js"></i>
-          <h3>JavaScript</h3>
-          <p>Skilled in adding interactivity and dynamic behavior to web pages.</p>
+        <div class="right">
+          <h3><strong>안녕하세요 누구누구 입니다</strong></h3>
+          <p>이 칸은 직접 입력하여 로컬에 저장되게 바꿀 예정입니다</p>
+          <p>..</p>
+          <p>..</p>
+          <p>..</p>
+          <div class="social">
+            <a href="#">
+              <i class="fa-brands fa-facebook"></i>
+            </a>
+            <a href="#">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="#">
+              <i class="fa-brands fa-twitch"></i>
+            </a>
+            <a href="#">
+              <i class="fa-brands fa-youtube"></i>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- Projects Section -->
-  <section id="projects">
+  <!-- end About Me -->
+  <!-- What I Do -->
+  <section id="features" class="do">
     <div class="container">
-      <h2>My Projects</h2>
-      <div class="project-gallery">
-        <div class="project">
-          <img src="your-image1.jpg" alt="Project 1">
-          <h3>Project Title 1</h3>
-          <p>Short description of your project.</p>
+      <div class="title">
+        <h4>활용 기술 스택</h4>
+        <h2>What I Do</h2>
+      </div>
+      <div class="do-me">                
+        <div class="do-inner">
+          <div class="icon">
+            <i class="fa-brands fa-html5"></i>
+          </div>
+          <div class="content">
+            <h3>HTML</h3>
+            <p>이 부분들 또한 직접 입력과 동시에 로컬에 저장되도록 바꿀 예정입니다</p>
+          </div>
+        </div>        
+        <div class="do-inner">
+          <div class="icon">
+            <i class="fa-brands fa-css3-alt"></i>        
+          </div>
+          <div class="content">
+            <h3>CSS</h3>
+            <p>이 부분들 또한 직접 입력과 동시에 로컬에 저장되도록 바꿀 예정입니다</p>
+          </div>
         </div>
-        <div class="project">
-          <img src="your-image2.jpg" alt="Project 2">
-          <h3>Project Title 2</h3>
-          <p>Short description of your project.</p>
+        <div class="do-inner">
+          <div class="icon">
+            <i class="fa-brands fa-bootstrap"></i>
+          </div>
+          <div class="content">
+            <h3>JAVA</h3>
+            <p>이 부분들 또한 직접 입력과 동시에 로컬에 저장되도록 바꿀 예정입니다</p>
+          </div>
+        </div>
+      </div>
+    </div>  
+  </section>
+  <!-- //end What I Do -->
+  <!-- Background -->
+  <div class="bg"></div>
+  <!-- //end Background-->
+  <!-- PortFolio -->
+  <section id="portfolio" class="portfolio">
+    <div class="container">
+      <div class="title">
+        <h4>포트폴리오</h4>
+        <h2>나의 작업물</h2>
+      </div>
+      <div class="portfolio-me">
+        <div class="portfolio-inner">
+          <img src="images/mock1.png" alt="">
+          <strong>BRANDING</strong>
+          <h3>Package Design</h3>
+        </div>
+        <div class="portfolio-inner">
+          <img src="images/mock2.png" alt="">
+          <strong>DEVELOPMENT</strong>
+          <h3>Tablet App Dev</h3>
+        </div>
+        <div class="portfolio-inner">
+          <img src="images/mock3.png" alt="">
+          <strong>MARKETING</strong>
+          <h3>Coka Cola </h3>
+        </div>
+        <div class="portfolio-inner">
+          <img src="images/mock4.png" alt="">
+          <strong>APP</strong>
+          <h3>FaceBook Clone</h3>
+        </div>
+        <div class="portfolio-inner">
+          <img src="images/mock5.png" alt="">
+          <strong>APP</strong>
+          <h3>Netflix Clone</h3>
+        </div>
+        <div class="portfolio-inner">
+          <img src="images/mock6.png" alt="">
+          <strong>WEB</strong>
+          <h3>FirmBee Web</h3>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- Contact Section -->
-  <section id="contact">
+  <!-- //end PortFolio -->
+  <!-- Contact With Me -->
+<section id="contact" class="contact">
     <div class="container">
-      <h2>Contact Me</h2>
-      <form id="contactForm">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" placeholder="Your Name" required>
+      <div class="title">
+        <h4>CONTACT</h4>
+        <h2>Contact With Me</h2>
+      </div>
+      <div class="contact-me">
+        <div class="left">
+          <div class="card">
+            <div class="icon">
+              <i class="fa-solid fa-phone-volume"></i>
+            </div>
+            <div class="info-text">
+              <h3>phone</h3>
+              <p>입력칸으로 바꾸기</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="icon">
+              <i class="fa-solid fa-envelope-open-text"></i>
+            </div>
+            <div class="info-text">
+              <h3>email</h3>
+              <p>입력칸으로 바꾸기</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="icon">
+              <i class="fa-solid fa-location-crosshairs"></i>
+            </div>
+            <div class="info-text">
+              <h3>address</h3>
+              <p>입력칸으로 바꾸기</p>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" placeholder="Your Email" required>
+        <div class="right">
+          <form action="#">
+            <div class="form-group">
+              <label for="name">name</label>
+              <input type="text" id="name">
+            </div>
+            <div class="form-group">
+              <label for="email">email</label>
+              <input type="text" id="email">
+            </div>
+            <div class="form-group">
+              <label for="msg">message</label>
+              <textarea id="msg"></textarea>
+            </div>
+            <button>send</button>
+          </form>
         </div>
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea id="message" placeholder="Your Message" required></textarea>
-        </div>
-        <button type="submit">Send Message</button>
-      </form>
-      <div id="responseMessage"></div>
+      </div>
     </div>
   </section>
-
+  <!-- end Contact With Me -->
+  <!-- script 태그는 수정하지 않습니다. -->
   <script src="script.js"></script>
 </body>
 </html>
