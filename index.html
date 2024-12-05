@@ -54,7 +54,6 @@
     </div>
   </main>
   <!-- //end Main -->
-  <!-- About Me -->
   <section id="about" class="about">
     <div class="container">
       <div class="title">
@@ -62,33 +61,30 @@
         <h2>내 소개</h2>
       </div>
       <div class="about-self">
+        <!-- 왼쪽: 사진 등록 -->
         <div class="left">
-          <img src="images/me_alone.jpg" alt="">
+          <label for="upload-photo" class="photo-label">사진 등록</label>
+          <input type="file" id="upload-photo" accept="image/*">
+          <img id="photo-preview" src="images/me_alone.jpg" alt="Uploaded Photo">
         </div>
+        <!-- 오른쪽: 자기소개 -->
         <div class="right">
-          <h3><strong>안녕하세요 누구누구 입니다</strong></h3>
-          <p>이 칸은 직접 입력하여 로컬에 저장되게 바꿀 예정입니다</p>
-          <p>..</p>
-          <p>..</p>
-          <p>..</p>
-          <div class="social">
-            <a href="#">
-              <i class="fa-brands fa-facebook"></i>
-            </a>
-            <a href="#">
-              <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="#">
-              <i class="fa-brands fa-twitch"></i>
-            </a>
-            <a href="#">
-              <i class="fa-brands fa-youtube"></i>
-            </a>
+          <!-- 입력 필드 -->
+          <div class="input-section">
+            <textarea id="about-input" rows="4" placeholder="여기에 내용을 입력하세요"></textarea>
+            <button id="save-about">저장하기</button>
+          </div>
+          <!-- 저장된 자기소개 표시 -->
+          <div class="display-section">
+            <h3>저장된 자기소개</h3>
+            <p id="about-display"></p>
           </div>
         </div>
       </div>
     </div>
   </section>
+  
+  
   <!-- end About Me -->
   <!-- What I Do -->
   <section id="features" class="do">

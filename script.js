@@ -65,4 +65,53 @@ for(let i = 0; i < scollMoveEl.length; i++){
     animationMove(target);
   });
 }
-/* End move.js */
+
+document.addEventListener('DOMContentLoaded', function () {
+  const aboutInput = document.getElementById('about-input');
+  const aboutDisplay = document.getElementById('about-display');
+  const saveAboutButton = document.getElementById('save-about');
+  const uploadPhoto = document.getElementById('upload-photo');
+  const photoPreview = document.getElementById('photo-preview');
+
+  // 로컬 스토리지에서 데이터를 불러오기
+  const savedAbout = localStorage.getItem('about');
+  const savedPhoto = localStorage.getItem('photo');
+
+  // 저장된 자기소개 불러오기
+  if (savedAbout) {
+    aboutDisplay.textContent = savedAbout;
+  }
+
+  // 저장된 사진 불러오기
+  if (savedPhoto) {
+    photoPreview.src = savedPhoto;
+  }
+
+  // 저장 버튼 클릭 시 자기소개 저장
+  saveAboutButton.addEventListener('click', function () {
+    const aboutText = aboutInput.value.trim();
+    if (aboutText) {
+      localStorage.setItem('about', aboutText); // 자기소개를 로컬 스토리지에 저장
+      aboutDisplay.textContent = aboutText; // 저장된 내용 표시
+      aboutInput.value = ''; // 입력 필드 비우기
+      alert('내 소개가 저장되었습니다!');
+    } else {
+      alert('입력 내용이 비어 있습니다. 내용을 입력해주세요.');
+    }
+  });
+
+  // 사진 등록 및 저장
+  uploadPhoto.addEventListener('change', function () {
+    const file = this.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const photoData = e.target.result; // Base64로 변환된 이미지 데이터
+        localStorage.setItem('photo', photoData); // 로컬 스토리지에 저장
+        photoPreview.src = photoData; // 미리보기 이미지 업데이트
+        alert('사진이 저장되었습니다!');
+      };
+      reader.readAsDataURL(file); // 파일을 Base64로 변환
+    }
+  });
+});
