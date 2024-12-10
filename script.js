@@ -339,3 +339,82 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("portfolio", JSON.stringify(savedPortfolio));
   }
 });
+
+
+// download.cv
+document.addEventListener("DOMContentLoaded", () => {
+  const { jsPDF } = window.jspdf;
+
+  const downloadButton = document.querySelector(".download");
+
+  downloadButton.addEventListener("click", () => {
+    try {
+      const doc = new jsPDF();
+
+      // Base64 폰트 등록
+      doc.addFileToVFS("NanumGothic-Regular.ttf", _fonts); // gulim.js에 있는 _fonts 사용
+      doc.addFont("NanumGothic-Regular.ttf", "NanumGothic", "normal");
+
+      // 폰트 설정
+      doc.setFont("NanumGothic");
+
+      // PDF 내용 추가
+      doc.setFontSize(16);
+      doc.text("My Profile", 20, 20);
+
+      // 소개
+      const about = localStorage.getItem("about") || "자기소개가 없습니다.";
+      doc.setFontSize(14);
+      doc.text("자기소개:", 20, 30);
+      doc.setFontSize(12);
+      doc.text(about, 20, 40, { maxWidth: 170 });
+
+      // 기술 스택
+      const stacks = JSON.parse(localStorage.getItem("stacks")) || [];
+      let currentHeight = 50;
+      doc.setFontSize(14);
+      doc.text("활용 기술 스택:", 20, currentHeight);
+      currentHeight += 10;
+
+      if (stacks.length > 0) {
+        stacks.forEach((stack, index) => {
+          doc.text(
+            `${index + 1}. ${stack.title}: ${stack.description}`,
+            20,
+            currentHeight,
+            { maxWidth: 170 }
+          );
+          currentHeight += 10;
+        });
+      } else {
+        doc.text("저장된 기술 스택이 없습니다.", 20, currentHeight);
+        currentHeight += 10;
+      }
+
+      // 포트폴리오
+      const portfolio = JSON.parse(localStorage.getItem("portfolio")) || [];
+      doc.setFontSize(14);
+      doc.text("포트폴리오:", 20, currentHeight);
+      currentHeight += 10;
+
+      if (portfolio.length > 0) {
+        portfolio.forEach((item, index) => {
+          doc.text(
+            `${index + 1}. ${item.title}: ${item.url}`,
+            20,
+            currentHeight,
+            { maxWidth: 170 }
+          );
+          currentHeight += 10;
+        });
+      } else {
+        doc.text("저장된 포트폴리오가 없습니다.", 20, currentHeight);
+      }
+
+      // PDF 저장
+      doc.save("MyProfile.pdf");
+    } catch (error) {
+      console.error("Error generating PDF:", error);
+    }
+  });
+});
