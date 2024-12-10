@@ -600,3 +600,283 @@ header.active{
   color: #333;
   line-height: 1.5;
 }
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #f9f9f9;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.modal-content h3 {
+  margin-bottom: 15px;
+}
+
+.modal-content input,
+.modal-content textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.modal-content button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  background-color: #f78b00;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background-color: #e66a00;
+}
+
+#add-stack-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#add-stack-button:hover {
+  background-color: #45a049;
+}
+
+.do-inner {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.do-inner .icon i {
+  font-size: 2rem;
+  color: #f78b00;
+  margin-bottom: 10px;
+}
+
+.do-inner .content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.do-inner .content p {
+  font-size: 1rem;
+}
+
+/* 셀렉트 박스 스타일 */
+#stack-icon {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Portfolio Modal Styles */
+/* 포트폴리오 전체 섹션 스타일 */
+section.portfolio {
+  padding: 5rem 0;
+  background-color: #f8f8f8;
+}
+
+/* 제목 스타일 */
+section.portfolio .title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+section.portfolio .title h4 {
+  font-size: 1.5rem;
+  color: #ed4848;
+  margin-bottom: 0.5rem;
+}
+
+section.portfolio .title h2 {
+  font-size: 3rem;
+  color: #333;
+}
+
+/* 포트폴리오 아이템 컨테이너 */
+section.portfolio .portfolio-me {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* 포트폴리오 아이템 */
+section.portfolio .portfolio-inner {
+  background-color: #fff;
+  flex: 1 1 calc(33.333% - 20px); /* 3개씩 한 줄에 배치 */
+  max-width: calc(33.333% - 20px); /* 3개씩 한 줄에 배치 */
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  overflow: hidden;
+  padding: 20px;
+  position: relative;
+}
+
+section.portfolio .portfolio-inner:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* 아이콘 스타일 */
+section.portfolio .portfolio-inner i {
+  font-size: 2rem;
+  color: #f78b00;
+  margin-bottom: 10px;
+}
+
+/* 포트폴리오 제목 */
+section.portfolio .portfolio-inner strong {
+  font-size: 1.25rem;
+  color: #333;
+  display: block;
+  margin: 10px 0;
+  word-wrap: break-word;
+}
+
+/* 포트폴리오 URL */
+section.portfolio .portfolio-inner a {
+  font-size: 1rem;
+  color: #007bff;
+  text-decoration: none;
+  word-wrap: break-word;
+  display: block;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+
+section.portfolio .portfolio-inner a:hover {
+  text-decoration: underline;
+}
+
+/* 포트폴리오 추가 버튼 */
+#add-portfolio-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+#add-portfolio-button:hover {
+  background-color: #45a049;
+}
+
+/* 모달 스타일 */
+#portfolio-modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6); /* 불투명 배경 */
+}
+
+.modal-content {
+  background-color: #f9f9f9;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 50%;
+  max-width: 500px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* 모달 입력 필드 */
+.modal-content input,
+.modal-content textarea,
+.modal-content select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* 모달 버튼 */
+.modal-content button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  background-color: #f78b00;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background-color: #e66a00;
+}
+
+/* 포트폴리오 항목 액션 버튼 */
+.portfolio-actions {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.portfolio-actions button {
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.portfolio-actions .edit-portfolio {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.portfolio-actions .edit-portfolio:hover {
+  background-color: #45a049;
+}
+
+.portfolio-actions .delete-portfolio {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.portfolio-actions .delete-portfolio:hover {
+  background-color: #e53935;
+}

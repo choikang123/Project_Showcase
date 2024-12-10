@@ -85,91 +85,95 @@
   </section>
   
   
-  <!-- end About Me -->
-  <!-- What I Do -->
   <section id="features" class="do">
     <div class="container">
       <div class="title">
         <h4>활용 기술 스택</h4>
         <h2>What I Do</h2>
       </div>
-      <div class="do-me">                
-        <div class="do-inner">
-          <div class="icon">
-            <i class="fa-brands fa-html5"></i>
-          </div>
-          <div class="content">
-            <h3>HTML</h3>
-            <p>이 부분들 또한 직접 입력과 동시에 로컬에 저장되도록 바꿀 예정입니다</p>
-          </div>
-        </div>        
-        <div class="do-inner">
-          <div class="icon">
-            <i class="fa-brands fa-css3-alt"></i>        
-          </div>
-          <div class="content">
-            <h3>CSS</h3>
-            <p>이 부분들 또한 직접 입력과 동시에 로컬에 저장되도록 바꿀 예정입니다</p>
-          </div>
-        </div>
-        <div class="do-inner">
-          <div class="icon">
-            <i class="fa-brands fa-bootstrap"></i>
-          </div>
-          <div class="content">
-            <h3>JAVA</h3>
-            <p>이 부분들 또한 직접 입력과 동시에 로컬에 저장되도록 바꿀 예정입니다</p>
-          </div>
-        </div>
+      <div class="do-me" id="do-me-container">
+        <!-- 기술 스택이 여기에 추가됨 -->
       </div>
-    </div>  
+      <button id="add-stack-button">+ 기술 스택 추가</button>
+    </div>
   </section>
-  <!-- //end What I Do -->
+  
+  <!-- Modal for Adding Stack -->
+  <div id="stack-modal" class="modal">
+    <div class="modal-content">
+      <h3>기술 스택 추가</h3>
+      <form id="stack-form">
+        <!-- 셀렉트 박스로 아이콘 선택 -->
+        <label for="stack-icon">아이콘 선택:</label>
+        <select id="stack-icon">
+          <option value="fa-html5">HTML</option>
+          <option value="fa-css3-alt">CSS</option>
+          <option value="fa-js-square">JavaScript</option>
+          <option value="fa-react">React</option>
+          <option value="fa-node">Node.js</option>
+          <option value="fa-python">Python</option>
+          <option value="fa-java">Java</option>
+        </select>
+  
+        <!-- 제목 입력 -->
+        <label for="stack-title">제목:</label>
+        <input type="text" id="stack-title" placeholder="예: HTML" required>
+  
+        <!-- 설명 입력 -->
+        <label for="stack-description">설명:</label>
+        <textarea id="stack-description" placeholder="기술 스택 설명을 입력하세요" required></textarea>
+  
+        <button type="submit">저장하기</button>
+      </form>
+      <button id="close-modal">닫기</button>
+    </div>
+  </div>
+  
+  
   <!-- Background -->
   <div class="bg"></div>
   <!-- //end Background-->
-  <!-- PortFolio -->
   <section id="portfolio" class="portfolio">
     <div class="container">
       <div class="title">
-        <h4>포트폴리오</h4>
-        <h2>나의 작업물</h2>
+        <h4>제목 그리고 url을 남겨주세요</h4>
+        <h2>포트폴리오</h2>
       </div>
-      <div class="portfolio-me">
-        <div class="portfolio-inner">
-          <img src="images/mock1.png" alt="">
-          <strong>BRANDING</strong>
-          <h3>Package Design</h3>
-        </div>
-        <div class="portfolio-inner">
-          <img src="images/mock2.png" alt="">
-          <strong>DEVELOPMENT</strong>
-          <h3>Tablet App Dev</h3>
-        </div>
-        <div class="portfolio-inner">
-          <img src="images/mock3.png" alt="">
-          <strong>MARKETING</strong>
-          <h3>Coka Cola </h3>
-        </div>
-        <div class="portfolio-inner">
-          <img src="images/mock4.png" alt="">
-          <strong>APP</strong>
-          <h3>FaceBook Clone</h3>
-        </div>
-        <div class="portfolio-inner">
-          <img src="images/mock5.png" alt="">
-          <strong>APP</strong>
-          <h3>Netflix Clone</h3>
-        </div>
-        <div class="portfolio-inner">
-          <img src="images/mock6.png" alt="">
-          <strong>WEB</strong>
-          <h3>FirmBee Web</h3>
-        </div>
+      <div class="portfolio-me" id="portfolio-list">
+        <!-- 포트폴리오 항목이 동적으로 추가됩니다 -->
       </div>
+      <button id="add-portfolio-button">+ 포트폴리오 추가</button>
     </div>
   </section>
-  <!-- //end PortFolio -->
+  
+  <!-- Modal for Adding Portfolio -->
+  <div id="portfolio-modal" class="modal">
+    <div class="modal-content">
+      <h3>포트폴리오 추가</h3>
+      <form id="portfolio-form">
+        <!-- 프로젝트 제목 -->
+        <label for="portfolio-title">프로젝트 제목:</label>
+        <input type="text" id="portfolio-title" placeholder="예: GitHub Repo" required>
+  
+        <!-- 프로젝트 URL -->
+        <label for="portfolio-url">프로젝트 URL:</label>
+        <input type="url" id="portfolio-url" placeholder="예: https://github.com/" required>
+  
+        <!-- 플랫폼 선택 -->
+        <label for="portfolio-platform">플랫폼 선택:</label>
+        <select id="portfolio-platform" required>
+          <option value="github">GitHub</option>
+          <option value="velog">Velog</option>
+          <option value="notion">Notion</option>
+          <option value="etc">기타</option>
+        </select>
+  
+        <button type="submit">저장하기</button>
+      </form>
+      <button id="close-portfolio-modal">닫기</button>
+    </div>
+  </div>
+  
   <!-- Contact With Me -->
 <section id="contact" class="contact">
     <div class="container">
