@@ -601,7 +601,7 @@ header.active{
   line-height: 1.5;
 }
 
-/* Modal Styles */
+/* 기술 스택 부분 css */
 .modal {
   display: none;
   position: fixed;
@@ -688,6 +688,22 @@ header.active{
 
 .do-inner .content p {
   font-size: 1rem;
+}
+
+/* 삭제 버튼 스타일 */
+.do-inner .delete-stack {
+  margin-top: 10px;
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.do-inner .delete-stack:hover {
+  background-color: #e53935;
 }
 
 /* 셀렉트 박스 스타일 */

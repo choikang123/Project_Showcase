@@ -159,6 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (stackIcon && stackTitle && stackDescription) {
       const stack = {
+        id: Date.now(), // 유니크 ID
         icon: stackIcon,
         title: stackTitle,
         description: stackDescription,
@@ -176,6 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderStack(stack) {
     const stackDiv = document.createElement("div");
     stackDiv.className = "do-inner";
+    stackDiv.setAttribute("data-id", stack.id); // 스택 ID 저장
 
     stackDiv.innerHTML = `
       <div class="icon">
@@ -184,8 +186,14 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="content">
         <h3>${stack.title}</h3>
         <p>${stack.description}</p>
+        <button class="delete-stack">삭제</button>
       </div>
     `;
+
+    // 삭제 버튼 기능 추가
+    stackDiv.querySelector(".delete-stack").addEventListener("click", () => {
+      deleteStack(stack.id);
+    });
 
     doMeContainer.appendChild(stackDiv);
   }
@@ -196,7 +204,22 @@ document.addEventListener("DOMContentLoaded", () => {
     stacks.push(stack);
     localStorage.setItem("stacks", JSON.stringify(stacks));
   }
+
+  // 기술 스택 삭제
+  function deleteStack(id) {
+    // 로컬 스토리지에서 삭제
+    let stacks = JSON.parse(localStorage.getItem("stacks")) || [];
+    stacks = stacks.filter((stack) => stack.id !== id);
+    localStorage.setItem("stacks", JSON.stringify(stacks));
+
+    // UI에서 삭제
+    const stackDiv = document.querySelector(`.do-inner[data-id="${id}"]`);
+    if (stackDiv) {
+      stackDiv.remove();
+    }
+  }
 });
+
 
 // 포트폴리오 js
 document.addEventListener("DOMContentLoaded", () => {
