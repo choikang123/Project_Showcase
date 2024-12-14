@@ -138,8 +138,8 @@
   <section id="portfolio" class="portfolio">
     <div class="container">
       <div class="title">
-        <h4>포트폴리오의 제목과 URL 작성</h4>
-        <h2>포트폴리오</h2>
+        <h4>나만의 포트폴리오</h4>
+        <h2>Portfolio</h2>
       </div>
       <div class="portfolio-me" id="portfolio-list">
         <!-- 포트폴리오 항목이 동적으로 추가됩니다 -->
@@ -176,63 +176,55 @@
     </div>
   </div>
   
+
   <!-- Contact With Me -->
 <section id="contact" class="contact">
-    <div class="container">
-      <div class="title">
-        <h4>CONTACT</h4>
-        <h2>Contact With Me</h2>
-      </div>
-      <div class="contact-me">
-        <div class="left">
-          <div class="card">
-            <div class="icon">
-              <i class="fa-solid fa-phone-volume"></i>
-            </div>
-            <div class="info-text">
-              <h3>phone</h3>
-              <p>입력칸으로 바꾸기</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="icon">
-              <i class="fa-solid fa-envelope-open-text"></i>
-            </div>
-            <div class="info-text">
-              <h3>email</h3>
-              <p>입력칸으로 바꾸기</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="icon">
-              <i class="fa-solid fa-location-crosshairs"></i>
-            </div>
-            <div class="info-text">
-              <h3>address</h3>
-              <p>입력칸으로 바꾸기</p>
-            </div>
-          </div>
-        </div>
-        <div class="right">
-          <form action="#">
-            <div class="form-group">
-              <label for="name">name</label>
-              <input type="text" id="name">
-            </div>
-            <div class="form-group">
-              <label for="email">email</label>
-              <input type="text" id="email">
-            </div>
-            <div class="form-group">
-              <label for="msg">message</label>
-              <textarea id="msg"></textarea>
-            </div>
-            <button>send</button>
-          </form>
-        </div>
-      </div>
+  <div class="container">
+    <!-- 섹션 제목 -->
+    <div class="title">
+      <h4>Contact List</h4>
+      <h2>My Contacts</h2>
     </div>
-  </section>
+
+    <!-- 연락처 리스트 -->
+    <div id="contact-list" class="contact-list">
+      <!-- 연락처 카드가 동적으로 추가됨 -->
+    </div>
+
+    <!-- 연락처 추가 버튼 -->
+    <button id="add-contact-button" class="add-contact-button">+ 연락처 추가</button>
+  </div>
+
+  <!-- Modal for Adding Contacts -->
+  <div id="contact-modal" class="modal">
+    <div class="modal-content">
+      <form id="contact-form">
+        <!-- 이름 입력 -->
+        <label for="contact-name">이름:</label>
+        <input type="text" id="contact-name" placeholder="예: 홍길동" required>
+
+        <!-- 전화번호 입력 -->
+        <label for="contact-phone">전화번호:</label>
+        <input type="text" id="contact-phone" placeholder="예: 010-1234-5678" required>
+
+        <!-- 이메일 입력 -->
+        <label for="contact-email">이메일:</label>
+        <input type="email" id="contact-email" placeholder="예: example@example.com" required>
+
+        <!-- 메모 입력 -->
+        <label for="contact-memo">메모:</label>
+        <textarea id="contact-memo" placeholder="메모를 입력하세요" required></textarea>
+
+        <!-- 저장 버튼 -->
+        <button type="submit">저장하기</button>
+      </form>
+
+      <!-- 닫기 버튼 -->
+      <button id="close-contact-modal">닫기</button>
+    </div>
+  </div>
+</section>
+
   <!-- end Contact With Me -->
   <!-- script 태그는 수정하지 않습니다. -->
   <script src="gulim.js"></script>

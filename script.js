@@ -340,8 +340,107 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const addContactButton = document.getElementById("add-contact-button");
+  const contactModal = document.getElementById("contact-modal");
+  const closeContactModalButton = document.getElementById("close-contact-modal");
+  const contactForm = document.getElementById("contact-form");
+  const contactList = document.getElementById("contact-list");
 
-// download.cv
+  let editIndex = null;
+
+  // Load contacts from localStorage
+  const savedContacts = JSON.parse(localStorage.getItem("contacts")) || [];
+  savedContacts.forEach((contact) => renderContact(contact));
+
+  // Open modal
+  addContactButton.addEventListener("click", () => {
+    contactModal.style.display = "block";
+    contactForm.reset();
+    editIndex = null;
+  });
+
+  // Close modal
+  closeContactModalButton.addEventListener("click", () => {
+    contactModal.style.display = "none";
+  });
+
+  // Save contact
+  contactForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const name = document.getElementById("contact-name").value.trim();
+    const phone = document.getElementById("contact-phone").value.trim();
+    const email = document.getElementById("contact-email").value.trim();
+    const memo = document.getElementById("contact-memo").value.trim();
+
+    const contact = { name, phone, email, memo };
+
+    if (editIndex !== null) {
+      // Edit contact
+      savedContacts[editIndex] = contact;
+      updateContactUI();
+      saveContactsToLocalStorage();
+    } else {
+      // Add new contact
+      savedContacts.push(contact);
+      renderContact(contact);
+      saveContactsToLocalStorage();
+    }
+
+    contactModal.style.display = "none";
+  });
+
+  // Render a single contact
+  function renderContact({ name, phone, email, memo }, index) {
+    const contactDiv = document.createElement("div");
+    contactDiv.className = "contact-card";
+    contactDiv.setAttribute("data-index", index);
+
+    contactDiv.innerHTML = `
+      <h3>${name}</h3>
+      <p>📞 ${phone}</p>
+      <p>📧 ${email}</p>
+      <p>${memo}</p>
+      <div class="contact-actions">
+        <button class="edit-contact">수정</button>
+        <button class="delete-contact">삭제</button>
+      </div>
+    `;
+
+    // Edit button
+    contactDiv.querySelector(".edit-contact").addEventListener("click", () => {
+      editIndex = index;
+      document.getElementById("contact-name").value = name;
+      document.getElementById("contact-phone").value = phone;
+      document.getElementById("contact-email").value = email;
+      document.getElementById("contact-memo").value = memo;
+      contactModal.style.display = "block";
+    });
+
+    // Delete button
+    contactDiv.querySelector(".delete-contact").addEventListener("click", () => {
+      savedContacts.splice(index, 1);
+      updateContactUI();
+      saveContactsToLocalStorage();
+    });
+
+    contactList.appendChild(contactDiv);
+  }
+
+  // Update UI
+  function updateContactUI() {
+    contactList.innerHTML = "";
+    savedContacts.forEach((contact, index) => renderContact(contact, index));
+  }
+
+  // Save contacts to localStorage
+  function saveContactsToLocalStorage() {
+    localStorage.setItem("contacts", JSON.stringify(savedContacts));
+  }
+});
+
+// pdf 저장 스크립트
 document.addEventListener("DOMContentLoaded", () => {
   const { jsPDF } = window.jspdf;
 
@@ -371,10 +470,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // 기술 스택
       const stacks = JSON.parse(localStorage.getItem("stacks")) || [];
-      let currentHeight = 50;
+      let currentHeight = 60;
+      const lineSpacing = 12; // 라인 간격을 조정할 변수
       doc.setFontSize(14);
       doc.text("활용 기술 스택:", 20, currentHeight);
-      currentHeight += 10;
+      currentHeight += lineSpacing;
 
       if (stacks.length > 0) {
         stacks.forEach((stack, index) => {
@@ -384,18 +484,18 @@ document.addEventListener("DOMContentLoaded", () => {
             currentHeight,
             { maxWidth: 170 }
           );
-          currentHeight += 10;
+          currentHeight += lineSpacing;
         });
       } else {
         doc.text("저장된 기술 스택이 없습니다.", 20, currentHeight);
-        currentHeight += 10;
+        currentHeight += lineSpacing;
       }
 
       // 포트폴리오
       const portfolio = JSON.parse(localStorage.getItem("portfolio")) || [];
       doc.setFontSize(14);
       doc.text("포트폴리오:", 20, currentHeight);
-      currentHeight += 10;
+      currentHeight += lineSpacing;
 
       if (portfolio.length > 0) {
         portfolio.forEach((item, index) => {
@@ -405,10 +505,32 @@ document.addEventListener("DOMContentLoaded", () => {
             currentHeight,
             { maxWidth: 170 }
           );
-          currentHeight += 10;
+          currentHeight += lineSpacing;
         });
       } else {
         doc.text("저장된 포트폴리오가 없습니다.", 20, currentHeight);
+        currentHeight += lineSpacing;
+      }
+
+      // 연락처
+      const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+      doc.setFontSize(14);
+      doc.text("연락처 목록:", 20, currentHeight);
+      currentHeight += lineSpacing;
+
+      if (contacts.length > 0) {
+        contacts.forEach((contact, index) => {
+          doc.text(
+            `${index + 1}. 이름: ${contact.name}, 전화번호: ${contact.phone}, 이메일: ${contact.email}, 메모: ${contact.memo}`,
+            20,
+            currentHeight,
+            { maxWidth: 170 }
+          );
+          currentHeight += lineSpacing;
+        });
+      } else {
+        doc.text("저장된 연락처가 없습니다.", 20, currentHeight);
+        currentHeight += lineSpacing;
       }
 
       // PDF 저장
