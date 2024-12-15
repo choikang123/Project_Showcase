@@ -490,7 +490,7 @@ document.addEventListener("DOMContentLoaded", () => {
         doc.text("저장된 기술 스택이 없습니다.", 20, currentHeight);
         currentHeight += lineSpacing;
       }
-
+//
       // 포트폴리오
       const portfolio = JSON.parse(localStorage.getItem("portfolio")) || [];
       doc.setFontSize(14);
