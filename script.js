@@ -440,7 +440,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// pdf 저장 스크립트
 document.addEventListener("DOMContentLoaded", () => {
   const { jsPDF } = window.jspdf;
 
@@ -451,7 +450,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const doc = new jsPDF();
 
       // Base64 폰트 등록
-      doc.addFileToVFS("NanumGothic-Regular.ttf", _fonts); // gulim.js에 있는 _fonts 사용
+      doc.addFileToVFS("NanumGothic-Regular.ttf", _fonts);
       doc.addFont("NanumGothic-Regular.ttf", "NanumGothic", "normal");
 
       // 폰트 설정
@@ -466,31 +465,29 @@ document.addEventListener("DOMContentLoaded", () => {
       doc.setFontSize(14);
       doc.text("자기소개:", 20, 30);
       doc.setFontSize(12);
-      doc.text(about, 20, 40, { maxWidth: 170 });
+      const splitAbout = doc.splitTextToSize(about, 170); // 170px 너비에 맞게 자동 줄 바꿈
+      doc.text(splitAbout, 20, 40);
 
       // 기술 스택
       const stacks = JSON.parse(localStorage.getItem("stacks")) || [];
-      let currentHeight = 60;
-      const lineSpacing = 12; // 라인 간격을 조정할 변수
+      let currentHeight = 60 + splitAbout.length * 6; // 줄 바꿈 길이에 따라 높이 조정
+      const lineSpacing = 12; // 라인 간격 조정
       doc.setFontSize(14);
       doc.text("활용 기술 스택:", 20, currentHeight);
       currentHeight += lineSpacing;
 
       if (stacks.length > 0) {
         stacks.forEach((stack, index) => {
-          doc.text(
-            `${index + 1}. ${stack.title}: ${stack.description}`,
-            20,
-            currentHeight,
-            { maxWidth: 170 }
-          );
-          currentHeight += lineSpacing;
+          const stackText = `${index + 1}. ${stack.title}: ${stack.description}`;
+          const splitStack = doc.splitTextToSize(stackText, 170);
+          doc.text(splitStack, 20, currentHeight);
+          currentHeight += splitStack.length * 6; // 줄 수에 따라 높이 증가
         });
       } else {
         doc.text("저장된 기술 스택이 없습니다.", 20, currentHeight);
         currentHeight += lineSpacing;
       }
-//
+
       // 포트폴리오
       const portfolio = JSON.parse(localStorage.getItem("portfolio")) || [];
       doc.setFontSize(14);
@@ -499,13 +496,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (portfolio.length > 0) {
         portfolio.forEach((item, index) => {
-          doc.text(
-            `${index + 1}. ${item.title}: ${item.url}`,
-            20,
-            currentHeight,
-            { maxWidth: 170 }
-          );
-          currentHeight += lineSpacing;
+          const portfolioText = `${index + 1}. ${item.title}: ${item.url}`;
+          const splitPortfolio = doc.splitTextToSize(portfolioText, 170);
+          doc.text(splitPortfolio, 20, currentHeight);
+          currentHeight += splitPortfolio.length * 6;
         });
       } else {
         doc.text("저장된 포트폴리오가 없습니다.", 20, currentHeight);
@@ -520,13 +514,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (contacts.length > 0) {
         contacts.forEach((contact, index) => {
-          doc.text(
-            `${index + 1}. 이름: ${contact.name}, 전화번호: ${contact.phone}, 이메일: ${contact.email}, 메모: ${contact.memo}`,
-            20,
-            currentHeight,
-            { maxWidth: 170 }
-          );
-          currentHeight += lineSpacing;
+          const contactText = `${index + 1}. 이름: ${contact.name}, 전화번호: ${contact.phone}, 이메일: ${contact.email}, 메모: ${contact.memo}`;
+          const splitContact = doc.splitTextToSize(contactText, 170);
+          doc.text(splitContact, 20, currentHeight);
+          currentHeight += splitContact.length * 6;
         });
       } else {
         doc.text("저장된 연락처가 없습니다.", 20, currentHeight);
